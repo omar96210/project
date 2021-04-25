@@ -1,0 +1,261 @@
+<div class="p-2">
+
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#AddCoustomer">إضافة
+        منتج</button>
+
+</div>
+<div class="">
+    <table id="example2" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>إسم المنتج</th>
+                <th>الوصف</th>
+                <th>السعر</th>
+                <th>الخصم</th>
+                <th>صورة المنتج</th>
+                <th>تعديل</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>شنطة لابتوب</td>
+                <td>أسود</td>
+                <td>200 EGP</td>
+                <td>10%</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>شنطة لابتوب</td>
+                <td>أسود</td>
+                <td>200 EGP</td>
+                <td>10%</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>شنطة لابتوب</td>
+                <td>أسود</td>
+                <td>200 EGP</td>
+                <td>10%</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>شنطة لابتوب</td>
+                <td>أسود</td>
+                <td>200 EGP</td>
+                <td>10%</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>شنطة لابتوب</td>
+                <td>أسود</td>
+                <td>200 EGP</td>
+                <td>10%</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+
+
+    <!-- <ngb-pagination [pageSize]="initialPageSize" [collectionSize]="collection" [(page)]="page" (pageChange)="paging()"
+        [rotate]="true" [maxSize]="7">
+    </ngb-pagination> -->
+</div>
+
+
+
+<!-- Modal AddCoustomer -->
+<div class="modal fade" id="AddCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">إضافة منتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="name">إسم المنتج</label>
+                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">الوصف</label>
+                                <input type="text" class="form-control" id="phone" placeholder="لون...">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">السعر</label>
+                                <input type="number" class="form-control" id="price" placeholder="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="discount">الخصم</label>
+                                <input type="number" class="form-control" id="discount" placeholder="15">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">صورة المنتج</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                <button type="button" class="btn btn-primary">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal EditCoustomer -->
+<div class="modal fade" id="EditCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل المنتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="name">إسم المنتج</label>
+                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">الوصف</label>
+                                <input type="text" class="form-control" id="phone" placeholder="لون...">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">السعر</label>
+                                <input type="number" class="form-control" id="price" placeholder="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="discount">الخصم</label>
+                                <input type="number" class="form-control" id="discount" placeholder="15">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">صورة المنتج</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                <button type="button" class="btn btn-primary">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal DeleteCoustomer -->
+<div class="modal fade" id="DeleteCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">حذف المنتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                هل أنت متاكد من حذف المنتج
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                <button type="button" class="btn btn-primary">نعم</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal productimage -->
+<div class="modal fade" id="productimage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">صورة المنتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-thumbnail" src="assets/productexample.jfif" width="400" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

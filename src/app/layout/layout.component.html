@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl" >
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+
+</head>
+
+<body id="body">
+    <div class="container-fluid text-right">
+        <div class="row">
+            <div class="col-2" style="">
+                <div class="row">
+                    <div class="col-12 " style="padding: 0%;" >
+                        <div id="sidebar" style="height: 100vh;">
+                            <a routerLink="/Mainpage">
+                                <div class="sidebar__title">
+                                    <div class="sidebar__img">
+                                        <img src="assets/logo.png" alt="logo" />
+                                        <h1>إسم المتجر </h1>
+                                    </div>
+                                    <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon"
+                                        aria-hidden="true"></i>
+                                </div>
+                            </a>
+
+
+                            <div class="sidebar__menu" >
+                                <div class="sidebar__link active_menu_link">
+                                    <i class="fa fa-home"> &nbsp; </i>
+                                    <a routerLink="/Mainpage">
+                                        الرئيسية
+                                    </a>
+
+                                </div>
+                                <div class="sidebar__link">
+                                    <i class="fa fa-user-secret" aria-hidden="true">&nbsp;&nbsp; </i>
+                                    <a routerLink="/Customers"> العملاء </a>
+                                </div>
+                                <div class="sidebar__link">
+                                    <i class="fa fa-building-o">&nbsp;&nbsp;</i>
+                                    <a routerLink="/Product">المنتجات</a>
+                                </div>
+                                <div class="sidebar__link">
+                                    <i class="fa fa-wrench">&nbsp;&nbsp;</i>
+                                    <a routerLink="/Orders">الطلبيات</a>
+                                </div>
+                                <div class="sidebar__link">
+                                    <i class="fa fa-archive">&nbsp;&nbsp;</i>
+                                    <a routerLink="/category">الاقسام</a>
+                                </div>
+
+                                <div class="sidebar__logout">
+                                    <i class="fa fa-power-off">&nbsp;&nbsp;</i>
+                                    <a routerLink="/Mainpage">تسجيل الخروج</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-10" style="padding: 0%;" >
+                <nav class="navbar">
+                    <div class="nav_icon" onclick="toggleSidebar()">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                    <div class="navbar__left">
+                        <!-- <a href="#">Subscribers</a>
+                      <a href="#">Video Management</a>
+                      <a class="active_link" href="#">Admin</a> -->
+                    </div>
+                    <div class="navbar__right">
+                        <!--  <a href="#">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </a> 
+                     <a href="#">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      </a>-->
+
+                        <img width="30" src="assets/avatar.svg" alt="" />
+
+                    </div>
+                </nav>
+                <main>
+                    <div class="main__container" style="height: 100vh;">
+                        <router-outlet></router-outlet>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

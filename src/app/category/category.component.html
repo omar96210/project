@@ -1,0 +1,207 @@
+<div class="p-2">
+
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#AddCategory">إضافة
+        قسم</button>
+
+</div>
+
+<div class="">
+    <table id="example2" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>إسم القسم</th>
+                <th>صورة القسم</th>
+                <th>تعديل</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>المطبخ والمائدة</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>المطبخ والمائدة</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>المطبخ والمائدة</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>المطبخ والمائدة</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>المطبخ والمائدة</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                </td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+
+
+    <!-- <ngb-pagination [pageSize]="initialPageSize" [collectionSize]="collection" [(page)]="page" (pageChange)="paging()"
+        [rotate]="true" [maxSize]="7">
+    </ngb-pagination> -->
+</div>
+
+
+
+<!-- Modal AddCategory -->
+<div class="modal fade" id="AddCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">إضافة قسم</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">إسم القسم</label>
+                        <input type="text" class="form-control" id="name" placeholder="الاسم">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">صورة القسم</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                <button type="button" class="btn btn-primary">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal EditCategory -->
+<div class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل القسم</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">إسم القسم</label>
+                        <input type="text" class="form-control" id="name" placeholder="الاسم">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">صورة القسم</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                <button type="button" class="btn btn-primary">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal DeleteCategory -->
+<div class="modal fade" id="DeleteCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">حذف القسم</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                هل أنت متاكد من حذف القسم
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                <button type="button" class="btn btn-primary">نعم</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Categoryimage -->
+<div class="modal fade" id="Categoryimage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">صورة القسم</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-thumbnail" src="assets/catagoryexaple.jpg" width="400" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

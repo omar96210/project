@@ -1,0 +1,118 @@
+
+<div class="">
+    <table id="example2" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>إسم العميل</th>
+                <th>الهاتف</th>
+                <th>السعر بالكامل</th>
+                <th>الموقع</th>
+                <th>التفاصيل</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>محمود حامد</td>
+                <td>012123456</td>
+                <td>2000 EGP</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>محمود حامد</td>
+                <td>012123456</td>
+                <td>2000 EGP</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>محمود حامد</td>
+                <td>012123456</td>
+                <td>2000 EGP</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>محمود حامد</td>
+                <td>012123456</td>
+                <td>2000 EGP</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:5%">
+                    1
+                </th>
+                <td>محمود حامد</td>
+                <td>012123456</td>
+                <td>2000 EGP</td>
+                <td style="width:11%; cursor: pointer;" class="text-center">
+                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                </td>
+                <td style="width:10%">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
+                </td>
+            </tr>
+            
+
+        </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+
+
+    <!-- <ngb-pagination [pageSize]="initialPageSize" [collectionSize]="collection" [(page)]="page" (pageChange)="paging()"
+        [rotate]="true" [maxSize]="7">
+    </ngb-pagination> -->
+</div>
+
+
+
+<!-- Modal vieworder -->
+<div class="modal fade" id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">عرض التفاصيل</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">إغلاق</button>
+            </div>
+        </div>
+    </div>
+</div>

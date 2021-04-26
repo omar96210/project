@@ -5,6 +5,7 @@ import {CustomersModule} from './customers/customers.module';
 import {MainpageModule} from './mainpage/mainpage.module';
 import {ProductModule} from './product/product.module';
 import {OrdersModule} from './orders/orders.module';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 // import {} from './'
 

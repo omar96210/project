@@ -12,4 +12,10 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Toggle:any;
+  id:any;
+  toggleShow(num: any){
+    this.Toggle=num;
+  }
+
 }

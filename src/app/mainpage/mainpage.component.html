@@ -1,4 +1,4 @@
-<div class="row " >
+<div class="row ">
     <div class="col-12">
         <div class="main__title">
             <img src="assets/hello.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;
@@ -10,36 +10,46 @@
     </div>
     <div class="col-12">
         <div class="main__cards row">
-            <div class="cardmain col-12 col-md-6 col-lg-3">
-                <i class="fa fa-user-o fa-2x text-lightblue" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">عدد العملاء</p>
-                    <span class="font-bold text-title">578</span>
-                </div>
+          
+            <div class="cardmain col-12 col-md-6 col-lg-3" >
+                <a routerLink="/Customers" style="text-decoration: none;">
+                    <i class="fas fa-user fa-2x text-lightblue" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <p class="text-primary-p">عدد العملاء</p>
+                        <span class="font-bold text-title">{{dashboardlist.counts.users}}</span>
+                    </div>
+                </a>
             </div>
-
             <div class="cardmain  col-12 col-md-6 col-lg-3">
-                <i class="fa fa-archive fa-2x text-red" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">عدد المنتجات</p>
-                    <span class="font-bold text-title">2467</span>
-                </div>
+                <a routerLink="/Product" style="text-decoration: none;">
+                    <i class="fas fa-boxes fa-2x text-red" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <p class="text-primary-p">عدد المنتجات</p>
+                        <span class="font-bold text-title">{{dashboardlist.counts.products}}</span>
+                    </div>
+                </a>
+              
             </div>
-
+            
             <div class="cardmain  col-12 col-md-6 col-lg-3">
-                <i class="fa fa-video-camera fa-2x text-yellow" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">عدد الطلبيات </p>
-                    <span class="font-bold text-title">340</span>
-                </div>
+                <a routerLink="/Orders" style="text-decoration: none;">
+                    <i class="fas fa-shopping-cart fa-2x text-yellow" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <p class="text-primary-p">عدد الطلبيات </p>
+                        <span class="font-bold text-title">{{dashboardlist.counts.orders}}</span>
+                    </div>
+                </a>
+              
             </div>
-
             <div class="cardmain  col-12 col-md-6 col-lg-3">
-                <i class="fa fa-thumbs-up fa-2x text-green" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">عدد الاقسام </p>
-                    <span class="font-bold text-title">645</span>
-                </div>
+                <a routerLink="/category" style="text-decoration: none;">
+                    <i class="fas fa-th-large fa-2x text-green" aria-hidden="true"></i>
+                    <div class="card_inner">
+                        <p class="text-primary-p">عدد الاقسام </p>
+                        <span class="font-bold text-title">{{dashboardlist.counts.category}}</span>
+                    </div>
+                </a>
+               
             </div>
         </div>
         <div class="col-12">
@@ -47,80 +57,26 @@
             <table id="example2" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th style="width:5%">#</th>
                         <th> الاسم</th>
-                        <th>الرقم</th>
+                        <th>الهاتف</th>
+                        <th>الايميل</th>
                         <th>المبلغ</th>
-                        <th>الموقع</th>
-                        <th>الحالة</th>
-                        <th>التفاصيل</th>
+                        <th style="width:10%">التفاصيل</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">
-                            <label class="check d-inline">
-                                1
-                            </label>
+
+                    <tr *ngFor="let dashboard of dashboarddata">
+                        <th style="width:5%">
+                            {{dashboard.id}}
                         </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check d-inline">
-                                1
-                            </label>
-                        </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check d-inline">
-                                1
-                            </label>
-                        </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check d-inline">
-                                1
-                            </label>
-                        </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check d-inline">
-                                1
-                            </label>
-                        </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{dashboard.user.name}}</td>
+                        <td>{{dashboard.user.phone}}</td>
+                        <td>{{dashboard.user.email}}</td>
+                        <td>{{dashboard.total_cost}}</td>
+                        <td style="width:10%"><button class="btn btn-primary" data-toggle="modal"
+                           (click)="openbill(dashboard.id)"     data-target="#vieworder">التفاصيل</button></td>
                     </tr>
 
 
@@ -132,4 +88,67 @@
 
 
 
+</div>
+
+<div class="modal fade bd-example-modal-lg" يهق id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">تفاصيل الطلب</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="invoice-box">
+                    <table cellpadding="0" cellspacing="0">
+           
+                        <tr class="heading">
+                            <td style="width:5%">#</td>
+                            <td>إسم المنتج</td>
+                            <td>الوصف</td>
+                            <td>الكمية</td>
+                            <td>السعر</td>
+                            <td>الخصم</td>
+                            <td>صورة المنتج</td>
+                        </tr>
+
+                        <tr class="item" *ngFor="let tabled of tabledata">
+                            <td style="width:5%">{{tabled.id}}</td>
+                            <td>{{tabled.name}}</td>
+                            <td>{{tabled.desc}}</td>
+                            <td>{{tabled.quantity}}</td>
+                            <td>{{tabled.price}}</td>
+                            <td>{{tabled.discount}}</td>
+                            <td style="width:11%; cursor: pointer;" class="text-center">
+                                <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#orderimage" (click)="openimage(tabled.id)" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">إغلاق</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal productimage -->
+<div class="modal fade" id="orderimage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">صورة المنتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-thumbnail" src="{{imagedata}}" max-width="500" max-height="500" alt="" />
+            </div>
+        </div>
+    </div>
 </div>

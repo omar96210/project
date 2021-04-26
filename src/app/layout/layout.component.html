@@ -13,7 +13,7 @@
 <body id="body">
     <div class="container-fluid text-right">
         <div class="row">
-            <div class="col-2" style="">
+            <div class="col-2" >
                 <div class="row">
                     <div class="col-12 " style="padding: 0%;" >
                         <div id="sidebar" style="height: 100vh;">
@@ -30,28 +30,34 @@
 
 
                             <div class="sidebar__menu" >
-                                <div class="sidebar__link active_menu_link">
+                                <div class="sidebar__link " (click)="toggleShow('1')"  
+                                [ngClass]=" Toggle === '1'? 'active_menu_link' : 'inactive'" routerLink="/Mainpage">
                                     <i class="fa fa-home"> &nbsp; </i>
-                                    <a routerLink="/Mainpage">
+                                    <a style="cursor: pointer;">
                                         الرئيسية
                                     </a>
+                                </div>
+                                <div class="sidebar__link" (click)="toggleShow('2')"  
+                                [ngClass]=" Toggle === '2'? 'active_menu_link' : 'inactive'" routerLink="/Customers"> 
+                                    <i class="fas fa-user">&nbsp;&nbsp; </i>
+                                    <a style="cursor: pointer;"> العملاء </a>
+                                </div>
+                                
+                                <div class="sidebar__link" (click)="toggleShow('3')"  
+                                [ngClass]=" Toggle === '3'? 'active_menu_link' : 'inactive'" routerLink="/Product">
+                                    <i class="fas fa-boxes">&nbsp;&nbsp;</i>
+                                    <a style="cursor: pointer;">المنتجات</a>
+                                </div>
+                                <div class="sidebar__link" (click)="toggleShow('4')"  
+                                [ngClass]=" Toggle === '4'? 'active_menu_link' : 'inactive'" routerLink="/Orders">
 
+                                    <i class="fas fa-shopping-cart">&nbsp;&nbsp;</i>
+                                    <a style="cursor: pointer;">الطلبيات</a>
                                 </div>
-                                <div class="sidebar__link">
-                                    <i class="fa fa-user-secret" aria-hidden="true">&nbsp;&nbsp; </i>
-                                    <a routerLink="/Customers"> العملاء </a>
-                                </div>
-                                <div class="sidebar__link">
-                                    <i class="fa fa-building-o">&nbsp;&nbsp;</i>
-                                    <a routerLink="/Product">المنتجات</a>
-                                </div>
-                                <div class="sidebar__link">
-                                    <i class="fa fa-wrench">&nbsp;&nbsp;</i>
-                                    <a routerLink="/Orders">الطلبيات</a>
-                                </div>
-                                <div class="sidebar__link">
-                                    <i class="fa fa-archive">&nbsp;&nbsp;</i>
-                                    <a routerLink="/category">الاقسام</a>
+                                <div class="sidebar__link" (click)="toggleShow('5')"  
+                                [ngClass]=" Toggle === '5'? 'active_menu_link' : 'inactive'" routerLink="/category">
+                                    <i class="fas fa-th-large">&nbsp;&nbsp;</i>
+                                    <a style="cursor: pointer;">الاقسام</a>
                                 </div>
 
                                 <div class="sidebar__logout">

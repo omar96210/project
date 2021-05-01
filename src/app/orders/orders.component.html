@@ -6,112 +6,96 @@
                 <th>#</th>
                 <th>إسم العميل</th>
                 <th>الهاتف</th>
+                <th>الاميل</th>
+
                 <th>السعر بالكامل</th>
                 <th>الموقع</th>
                 <th>التفاصيل</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+      
+            <tr *ngFor="let orders of orderslist">
                 <th style="width:5%">
-                    1
+                    {{orders.id}}
                 </th>
-                <td>محمود حامد</td>
-                <td>012123456</td>
-                <td>2000 EGP</td>
+                <td>{{orders.user.name}}</td>
+                <td>{{orders.user.phone}}</td>
+                <td>{{orders.user.email}}</td>
+                <td>{{orders.total_cost}}</td>
                 <td style="width:11%; cursor: pointer;" class="text-center">
                     <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
                 </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
-                </td>
+                <td style="width:10%"><button class="btn btn-primary" data-toggle="modal"
+                   (click)="openbill(orders.id)"     data-target="#vieworder">التفاصيل</button></td>
             </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>محمود حامد</td>
-                <td>012123456</td>
-                <td>2000 EGP</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>محمود حامد</td>
-                <td>012123456</td>
-                <td>2000 EGP</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>محمود حامد</td>
-                <td>012123456</td>
-                <td>2000 EGP</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>محمود حامد</td>
-                <td>012123456</td>
-                <td>2000 EGP</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#vieworder">التفاصيل</button>
-                </td>
-            </tr>
-            
 
         </tbody>
     </table>
-    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+    <ngb-pagination  [(collectionSize)]="collectionSize" [(page)]="page" aria-label="Default pagination" (pageChange)=pagination($event) [maxSize]="7"></ngb-pagination>
 
-
-    <!-- <ngb-pagination [pageSize]="initialPageSize" [collectionSize]="collection" [(page)]="page" (pageChange)="paging()"
-        [rotate]="true" [maxSize]="7">
-    </ngb-pagination> -->
 </div>
 
 
-
-<!-- Modal vieworder -->
-<div class="modal fade" id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal TableData -->
+<div class="modal fade bd-example-modal-lg" يهق id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">عرض التفاصيل</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">تفاصيل الطلب</h5>
                 <button type="button" class="close " data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                
+
+                <div class="invoice-box">
+                    <table cellpadding="0" cellspacing="0">
+           
+                        <tr class="heading">
+                            <td style="width:5%">#</td>
+                            <td>إسم المنتج</td>
+                            <td>الوصف</td>
+                            <td>الكمية</td>
+                            <td>السعر</td>
+                            <td>الخصم</td>
+                            <td>صورة المنتج</td>
+                        </tr>
+
+                        <tr class="item" *ngFor="let tabled of tabledata">
+                            <td style="width:5%">{{tabled.id}}</td>
+                            <td>{{tabled.name}}</td>
+                            <td>{{tabled.desc}}</td>
+                            <td>{{tabled.quantity}}</td>
+                            <td>{{tabled.price}}</td>
+                            <td>{{tabled.discount}}</td>
+                            <td style="width:11%; cursor: pointer;" class="text-center">
+                                <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#orderimage" (click)="openimage(tabled.id)" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">إغلاق</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal productimage -->
+<div class="modal fade" id="orderimage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">صورة المنتج</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-thumbnail" src="{{imagedata}}" max-width="500" max-height="500" alt="" />
             </div>
         </div>
     </div>

@@ -5,14 +5,28 @@ import {CustomersModule} from './customers/customers.module';
 import {MainpageModule} from './mainpage/mainpage.module';
 import {ProductModule} from './product/product.module';
 import {OrdersModule} from './orders/orders.module';
-import { MainpageComponent } from './mainpage/mainpage.component';
+import {layoutModule} from './layout/layout.module';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { LayoutComponent } from './layout/layout.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthLayoutComponent } from './auth/auth-layout.component';
 
 // import {} from './'
 
 const routes: Routes = [
-
   {
     path: '',
+    component: AuthLayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: () => AuthenticationModule
+    }
+    ]
+  },
+  
+  {
+    path: '',
+    component: LayoutComponent,
     children: [{
       path: 'category',
       loadChildren: () => CategoryModule
@@ -28,7 +42,11 @@ const routes: Routes = [
     },{
       path: 'Orders',
       loadChildren: () => OrdersModule
+    },{
+      path: 'Layout',
+      loadChildren: () => layoutModule
     },
+    
     
     
   

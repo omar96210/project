@@ -5,13 +5,14 @@
             <div class="main__greeting">
                 <h1>أهلا</h1>
                 <p>مرحبا بك في صفحة التحكم</p>
+
             </div>
         </div>
     </div>
     <div class="col-12">
         <div class="main__cards row">
-          
-            <div class="cardmain col-12 col-md-6 col-lg-3" >
+
+            <div class="cardmain col-12 col-md-6 col-lg-3">
                 <a routerLink="/Customers" style="text-decoration: none;">
                     <i class="fas fa-user fa-2x text-lightblue" aria-hidden="true"></i>
                     <div class="card_inner">
@@ -28,9 +29,9 @@
                         <span class="font-bold text-title">{{dashboardlist.counts.products}}</span>
                     </div>
                 </a>
-              
+
             </div>
-            
+
             <div class="cardmain  col-12 col-md-6 col-lg-3">
                 <a routerLink="/Orders" style="text-decoration: none;">
                     <i class="fas fa-shopping-cart fa-2x text-yellow" aria-hidden="true"></i>
@@ -39,7 +40,7 @@
                         <span class="font-bold text-title">{{dashboardlist.counts.orders}}</span>
                     </div>
                 </a>
-              
+
             </div>
             <div class="cardmain  col-12 col-md-6 col-lg-3">
                 <a routerLink="/category" style="text-decoration: none;">
@@ -49,7 +50,7 @@
                         <span class="font-bold text-title">{{dashboardlist.counts.category}}</span>
                     </div>
                 </a>
-               
+
             </div>
         </div>
         <div class="col-12">
@@ -74,9 +75,9 @@
                         <td>{{dashboard.user.name}}</td>
                         <td>{{dashboard.user.phone}}</td>
                         <td>{{dashboard.user.email}}</td>
-                        <td>{{dashboard.total_cost}}</td>
+                        <td>{{dashboard.total_cost}} {{loading}}</td>
                         <td style="width:10%"><button class="btn btn-primary" data-toggle="modal"
-                           (click)="openbill(dashboard.id)"     data-target="#vieworder">التفاصيل</button></td>
+                                (click)="openbill(dashboard.id)" data-target="#vieworder">التفاصيل</button></td>
                     </tr>
 
 
@@ -85,13 +86,24 @@
         </div>
 
     </div>
-
-
+    <div >
+        <div class="lds-roller" id="loading" >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
 </div>
 
-<div class="modal fade bd-example-modal-lg" يهق id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<!-- Modal TableData -->
+<div class="modal fade bd-example-modal-lg" يهق id="vieworder" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,7 +116,7 @@
 
                 <div class="invoice-box">
                     <table cellpadding="0" cellspacing="0">
-           
+
                         <tr class="heading">
                             <td style="width:5%">#</td>
                             <td>إسم المنتج</td>
@@ -123,7 +135,8 @@
                             <td>{{tabled.price}}</td>
                             <td>{{tabled.discount}}</td>
                             <td style="width:11%; cursor: pointer;" class="text-center">
-                                <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#orderimage" (click)="openimage(tabled.id)" />
+                                <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal"
+                                    data-target="#orderimage" (click)="openimage(tabled.id)" />
                             </td>
                         </tr>
                     </table>
@@ -152,3 +165,5 @@
         </div>
     </div>
 </div>
+
+

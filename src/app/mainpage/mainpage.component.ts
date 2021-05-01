@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../services/service';
+declare var $: any;
 
 @Component({
   selector: 'app-mainpage',
@@ -17,13 +18,16 @@ export class MainpageComponent implements OnInit {
   IDbill: any;
   IDimage:any;
   imagedata:any;
+  indexbill: any;
+  hidden:boolean=false;
   constructor(public Service: Service) { }
-
   ngOnInit(): void {
     this.Alldashboard();
+    
   }
 
   Alldashboard() {
+
     this.Service.GetDashboardData()
       .then(data => {
         this.dashboardlist = data;
@@ -43,16 +47,18 @@ export class MainpageComponent implements OnInit {
     for (let i = 0; i <=this.lengthrecentOrders-1; i++) {
       if ( this.dashboardlist.recentOrders[i].id == this.IDbill) {
         this.tabledata = this.dashboardlist.recentOrders[i].products;
+        this.indexbill = i;
+
       }
     }
 
   }
   openimage(imageid: any) {
     this.IDimage = imageid;
-    this.lengthrecentOrderproducts=this.dashboardlist.recentOrders[3].products.length;
+    this.lengthrecentOrderproducts=this.dashboardlist.recentOrders[this.indexbill].products.length;
     for (let i = 0; i <=this.lengthrecentOrderproducts-1; i++) {
-      if ( this.dashboardlist.recentOrders[this.IDbill].products[i].id == this.IDimage) {
-        this.imagedata = this.dashboardlist.recentOrders[this.IDimage].products[i].image;
+      if ( this.dashboardlist.recentOrders[this.indexbill].products[i].id == this.IDimage) {
+        this.imagedata = this.dashboardlist.recentOrders[this.indexbill].products[i].image;
        
       }
     }

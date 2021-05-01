@@ -19,16 +19,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let product of productlist">
                 <th style="width:5%">
-                    1
+                    {{product.id}}
                 </th>
-                <td>شنطة لابتوب</td>
-                <td>أسود</td>
-                <td>200 EGP</td>
-                <td>10%</td>
+                <td>{{product.name}}</td>
+                <td>{{product.desc}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.discount}}</td>
                 <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
+                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" (click)="openimage(product.id)" />
                 </td>
                 <td style="width:10%">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
@@ -37,88 +37,12 @@
                     <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
                 </td>
             </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>شنطة لابتوب</td>
-                <td>أسود</td>
-                <td>200 EGP</td>
-                <td>10%</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>شنطة لابتوب</td>
-                <td>أسود</td>
-                <td>200 EGP</td>
-                <td>10%</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>شنطة لابتوب</td>
-                <td>أسود</td>
-                <td>200 EGP</td>
-                <td>10%</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
-                </td>
-            </tr>
-            <tr>
-                <th style="width:5%">
-                    1
-                </th>
-                <td>شنطة لابتوب</td>
-                <td>أسود</td>
-                <td>200 EGP</td>
-                <td>10%</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
-                </td>
-                <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
-                </td>
-            </tr>
+
 
 
         </tbody>
     </table>
-    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
-
-
-    <!-- <ngb-pagination [pageSize]="initialPageSize" [collectionSize]="collection" [(page)]="page" (pageChange)="paging()"
-        [rotate]="true" [maxSize]="7">
-    </ngb-pagination> -->
+    <ngb-pagination  [(collectionSize)]="collectionSize" [(page)]="page" aria-label="Default pagination" (pageChange)=pagination($event) [maxSize]="7"></ngb-pagination>
 </div>
 
 
@@ -135,30 +59,30 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="form" >
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="name">إسم المنتج</label>
-                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل">
+                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل" [formControl]="form.controls['Name']">
                             </div>
                             <div class="form-group">
-                                <label for="phone">الوصف</label>
-                                <input type="text" class="form-control" id="phone" placeholder="لون...">
+                                <label for="desc">الوصف</label>
+                                <input type="text" class="form-control" id="desc" placeholder="لون..."  [formControl]="form.controls['descr']">
                             </div>
                             <div class="form-group">
                                 <label for="price">السعر</label>
-                                <input type="number" class="form-control" id="price" placeholder="120">
+                                <input type="number" class="form-control" id="price" placeholder="120"  [formControl]="form.controls['price']">
                             </div>
                             <div class="form-group">
                                 <label for="discount">الخصم</label>
-                                <input type="number" class="form-control" id="discount" placeholder="15">
+                                <input type="number" class="form-control" id="discount" placeholder="15"  [formControl]="form.controls['disco']">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">صورة المنتج</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1"  [formControl]="form.controls['newImageName']">
                             </div>
                         </div>
                     </div>
@@ -166,7 +90,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                <button type="button" class="btn btn-primary">حفظ</button>
+                <button type="button" class="btn btn-primary" (click)="AddProductform()">حفظ</button>
             </div>
         </div>
     </div>
@@ -254,7 +178,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <img class="img-thumbnail" src="assets/productexample.jfif" width="400" alt="" />
+                <img class="img-thumbnail" src="{{imagedata}}" max-width="500" max-height="500" alt="" />
             </div>
         </div>
     </div>

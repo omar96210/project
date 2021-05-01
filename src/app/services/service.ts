@@ -143,17 +143,19 @@ export class Service {
         headers.append('Content-Type', 'application/json');
         headers.append('token', this.token2);
 
+
         return this.http.post(this.apiUrl + 'dashboard/add-product?name='+name+'&desc='+desc+'&image='+image+'&category_id=1&seller_id=1&order_count=1&price='+price+'&rate=4&discount='+discount,
             { headers: headers })
     }
 
-    AddCatagory(name: any,image:any)  {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('token', this.token2);
-
-        return this.http.post(this.apiUrl + 'dashboard/add-category?name='+name+'&image='+image,
-            { headers: headers })
+    AddCatagory(name: any,image:File)  {
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        let formData:FormData = new FormData();
+        formData.append('image', image);
+        formData.append('name', name);
+        return this.http.post(this.apiUrl + 'dashboard/add-category',formData)
     }
 
 

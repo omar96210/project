@@ -62,12 +62,10 @@ export class CategoryComponent implements OnInit {
       if (this.Categorylist[i].id == this.IDimage) {
         this.imagedata = this.Categorylist[i].image;
         console.log(this.imagedata)
-
         this.imagedata= this.Api +this.imagedata
         console.log(this.imagedata)
       }
     }
-
   }
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
@@ -78,7 +76,7 @@ export class CategoryComponent implements OnInit {
     console.log("name", this.NameForm)
     console.log("name", this.newImageName)
 
-    this.Service.AddCatagory(this.NameForm, this.newImageName).subscribe(
+    this.Service.AddCatagory(this.NameForm, this.selectedFile).subscribe(
       data => {
         this.result = data;
         console.log('this.result', this.result);

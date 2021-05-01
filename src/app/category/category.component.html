@@ -23,7 +23,7 @@
                 </th>
                 <td>{{Category.name}}</td>
                 <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" (click)=openimage(Category.id) />
+                    <img src="{{Category.image}}" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" (click)=openimage(Category.id) />
                 </td>
                 <td style="width:10%">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
@@ -56,7 +56,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form  [formGroup]="form">
+                <form  [formGroup]="form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">إسم القسم</label>
                         <input type="text" class="form-control" id="name" placeholder="الاسم" [formControl]="form.controls['Name']">

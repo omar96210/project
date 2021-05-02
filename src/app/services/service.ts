@@ -141,12 +141,12 @@ export class Service {
     
 
     
-    AddProduct(name: any, desc: any,image:any,price:any,discount:any)  {
+    AddProduct(name: any, desc: any,image:any,price:any,discount:any,category_id:any)  {
         // const headers = new Headers();
         // headers.append('Content-Type', 'application/json');
         // headers.append('token', this.token2);
         let formDataAddProduct:FormData = new FormData();
-        formDataAddProduct.append('category_id',this.num);
+        formDataAddProduct.append('category_id',category_id);
         formDataAddProduct.append('desc', desc);
         formDataAddProduct.append('discount', discount);
         formDataAddProduct.append('image_file', image);
@@ -180,21 +180,22 @@ export class Service {
         return this.http.post(this.apiUrl + 'dashboard/delete-product?id='+Id,Id)
     }
 
-    editProduct(name: any, desc: any,image:any,price:any,discount:any)  {
+    editProduct(id:any,name: any, desc: any,image:any,price:any,discount:any,category_id:any)  {
         // const headers = new Headers();
         // headers.append('Content-Type', 'application/json');
         // headers.append('token', this.token2);
-        let formDataAddProduct:FormData = new FormData();
-        formDataAddProduct.append('category_id',this.num);
-        formDataAddProduct.append('desc', desc);
-        formDataAddProduct.append('discount', discount);
-        formDataAddProduct.append('image_file', image);
-        formDataAddProduct.append('name', name);
-        formDataAddProduct.append('order_count',this.order_count);
-        formDataAddProduct.append('rate',this.rate);
-        formDataAddProduct.append('seller_id',this.seller_id);
-        formDataAddProduct.append('price', price);
-        return this.http.post(this.apiUrl + 'dashboard/add-product',formDataAddProduct)
+        let formDataeditProduct:FormData = new FormData();
+        formDataeditProduct.append('id',id);
+        formDataeditProduct.append('category_id',category_id);
+        formDataeditProduct.append('desc', desc);
+        formDataeditProduct.append('discount', discount);
+        formDataeditProduct.append('image_file', image);
+        formDataeditProduct.append('name', name);
+        formDataeditProduct.append('order_count',this.order_count);5
+        formDataeditProduct.append('rate',this.rate);4
+        formDataeditProduct.append('seller_id',this.seller_id);1
+        formDataeditProduct.append('price', price);
+        return this.http.post(this.apiUrl + 'dashboard/edit-product',formDataeditProduct)
     }
 
     editCatagory(id:any,name: any,image:File)  {

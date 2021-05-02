@@ -1,6 +1,6 @@
 <div class="p-2">
 
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#AddCoustomer">إضافة
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Addproduct">إضافة
         منتج</button>
 
 </div>
@@ -31,7 +31,7 @@
                     <img src="{{product.image}}" width="50" height="50" alt="" data-toggle="modal" data-target="#productimage" (click)="openimage(product.id)" />
                 </td>
                 <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#Editproduct" (click)="getproductid(product.id)">تعديل</button>
                 </td>
                 <td style="width:10%">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#Deleteproduct" (click)="getId(product.id)">حذف</button>
@@ -47,8 +47,8 @@
 
 
 
-<!-- Modal AddCoustomer -->
-<div class="modal fade" id="AddCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal Addproduct -->
+<div class="modal fade" id="Addproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
@@ -81,6 +81,14 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
+                                <label for="sel1">:أختار القسم</label>
+                                <select class="form-control" id="sel1" (change)="getCatagoryaddid($event)">
+                                    <option >أختر</option>
+                                  <option *ngFor="let Category of Categorydata" id="{{Category.id}}">{{Category.name}}
+                                  </option>
+                                </select>
+                              </div>
+                            <div class="form-group">
                                 <label for="exampleFormControlFile1">صورة المنتج</label>
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1"(change)="onFileSelected($event)">
                             </div>
@@ -95,52 +103,58 @@
         </div>
     </div>
 </div>
-<!-- Modal EditCoustomer -->
-<div class="modal fade" id="EditCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal Editproduct -->
+<div class="modal fade" id="Editproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل المنتج</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل منتج</h5>
                 <button type="button" class="close " data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="editform" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="name">إسم المنتج</label>
-                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل">
+                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل" [formControl]="editform.controls['editName']">
                             </div>
                             <div class="form-group">
-                                <label for="phone">الوصف</label>
-                                <input type="text" class="form-control" id="phone" placeholder="لون...">
+                                <label for="desc">الوصف</label>
+                                <input type="text" class="form-control" id="desc" placeholder="لون..."  [formControl]="editform.controls['editdescr']">
                             </div>
                             <div class="form-group">
                                 <label for="price">السعر</label>
-                                <input type="number" class="form-control" id="price" placeholder="120">
+                                <input type="number" class="form-control" id="price" placeholder="120"  [formControl]="editform.controls['editprice']">
                             </div>
                             <div class="form-group">
                                 <label for="discount">الخصم</label>
-                                <input type="number" class="form-control" id="discount" placeholder="15">
+                                <input type="number" class="form-control" id="discount" placeholder="15"  [formControl]="editform.controls['editdisco']">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
+                                <label for="sel1">:أختار القسم</label>
+                                <select class="form-control" id="sel1" (change)="getCatagoryaddid($event)">
+                                    <option >أختر</option>
+                                  <option *ngFor="let Category of Categorydata" id="{{Category.id}}">{{Category.name}}
+                                  </option>
+                                </select>
+                              </div>
+                            <div class="form-group">
                                 <label for="exampleFormControlFile1">صورة المنتج</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1"(change)="onFileSelected($event)">
                             </div>
                         </div>
                     </div>
-
-
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                <button type="button" class="btn btn-primary">حفظ</button>
+                <button type="button" class="btn btn-primary" (click)="editProductform()" >تعديل</button>
             </div>
         </div>
     </div>

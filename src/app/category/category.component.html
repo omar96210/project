@@ -17,28 +17,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Category of Categorylist">
+            <tr *ngFor="let Category of Categorydata">
                 <th style="width:5%">
                     {{Category.id}}
                 </th>
                 <td>{{Category.name}}</td>
                 <td style="width:11%; cursor: pointer;" class="text-center">
-                    <img src="{{Category.image}}" width="50" alt="" data-toggle="modal" data-target="#Categoryimage" (click)=openimage(Category.id) />
+                    <img src="{{Category.image}}" width="50" alt="" data-toggle="modal" data-target="#Categoryimage"
+                        (click)=openimage(Category.id) />
                 </td>
                 <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#EditCategory">تعديل</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#editCategory" (click)="editgetId(Category.id)">تعديل</button>
                 </td>
                 <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory">حذف</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCategory"
+                        (click)="getId(Category.id)">حذف</button>
                 </td>
             </tr>
-            
+
 
 
 
         </tbody>
     </table>
-    <ngb-pagination  [(collectionSize)]="collectionSize" [(page)]="page" aria-label="Default pagination" (pageChange)=pagination($event) [maxSize]="7"></ngb-pagination>
+    <ngb-pagination [(collectionSize)]="collectionSize" [(page)]="page" aria-label="Default pagination"
+        (pageChange)=pagination($event) [maxSize]="7"></ngb-pagination>
 
 </div>
 
@@ -56,14 +59,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form  [formGroup]="form" enctype="multipart/form-data">
+                <form [formGroup]="form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">إسم القسم</label>
-                        <input type="text" class="form-control" id="name" placeholder="الاسم" [formControl]="form.controls['Name']">
+                        <input type="text" class="form-control" id="name" placeholder="الاسم"
+                            [formControl]="form.controls['Name']">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">صورة القسم</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1"(change)="onFileSelected($event)" >
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                            (change)="onFileSelected($event)">
                     </div>
                 </form>
             </div>
@@ -75,31 +80,33 @@
     </div>
 </div>
 <!-- Modal EditCategory -->
-<div class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل القسم</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">تعديل قسم</h5>
                 <button type="button" class="close " data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="editform" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">إسم القسم</label>
-                        <input type="text" class="form-control" id="name" placeholder="الاسم">
+                        <input type="text" class="form-control" id="editname" placeholder="الاسم"
+                            [formControl]="editform.controls['editName']">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">صورة القسم</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                            (change)="editonFileSelected($event)">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                <button type="button" class="btn btn-primary">حفظ</button>
+                <button type="button" class="btn btn-primary" (click)="editCategoryform()">تعديل</button>
             </div>
         </div>
     </div>
@@ -120,7 +127,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                <button type="button" class="btn btn-primary">نعم</button>
+                <button type="button" class="btn btn-primary" (click)="deletCategoryform()">نعم</button>
             </div>
         </div>
     </div>
@@ -137,7 +144,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <img class="img-thumbnail" src="{{imagedata}}" max-width="500" max-height="600"  alt="" />
+                <img class="img-thumbnail" src="{{imagedata}}" max-width="500" max-height="600" alt="" />
             </div>
         </div>
     </div>

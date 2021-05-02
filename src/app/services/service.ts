@@ -10,10 +10,12 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class Service {
-
+    num:any=2;
     apiUrl: any;
     token2 = "ThisIsTheSwaggerToken ";
-
+    order_count:any=5;
+    rate:any=4;
+    seller_id:any=1;
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -25,6 +27,7 @@ export class Service {
         //https://www.appweb.website/100top/api/dashboard/orders?size=5&number=1
         //https://www.appweb.website/100top/api/dashboard/users?size=5&number=1
         //https://www.appweb.website/100top/api/dashboard/add-product?name=fsfsddsg&desc=sdsgdfjhsfdh&image&category_id=1&seller_id=1&order_count=1&price=350&rate=4&discount=22
+        //https://www.appweb.website/100top/api/dashboard/delete-product?id=12
         this.apiUrl = 'https://www.appweb.website/100top/api/';
     }
 
@@ -139,13 +142,20 @@ export class Service {
 
     
     AddProduct(name: any, desc: any,image:any,price:any,discount:any)  {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('token', this.token2);
-
-
-        return this.http.post(this.apiUrl + 'dashboard/add-product?name='+name+'&desc='+desc+'&image='+image+'&category_id=1&seller_id=1&order_count=1&price='+price+'&rate=4&discount='+discount,
-            { headers: headers })
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        let formDataAddProduct:FormData = new FormData();
+        formDataAddProduct.append('category_id',this.num);
+        formDataAddProduct.append('desc', desc);
+        formDataAddProduct.append('discount', discount);
+        formDataAddProduct.append('image_file', image);
+        formDataAddProduct.append('name', name);
+        formDataAddProduct.append('order_count',this.order_count);5
+        formDataAddProduct.append('rate',this.rate);4
+        formDataAddProduct.append('seller_id',this.seller_id);1
+        formDataAddProduct.append('price', price);
+        return this.http.post(this.apiUrl + 'dashboard/add-product',formDataAddProduct)
     }
 
     AddCatagory(name: any,image:File)  {
@@ -153,12 +163,48 @@ export class Service {
         // headers.append('Content-Type', 'application/json');
         // headers.append('token', this.token2);
         let formData:FormData = new FormData();
-        formData.append('image', image);
+        formData.append('image_file', image);
         formData.append('name', name);
         return this.http.post(this.apiUrl + 'dashboard/add-category',formData)
     }
+    deleteCatagory(Id:any)  {
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        return this.http.post(this.apiUrl + 'dashboard/delete-category?id='+Id,Id)
+    }
+    deleteProduct(Id:any)  {
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        return this.http.post(this.apiUrl + 'dashboard/delete-product?id='+Id,Id)
+    }
 
+    editProduct(name: any, desc: any,image:any,price:any,discount:any)  {
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        let formDataAddProduct:FormData = new FormData();
+        formDataAddProduct.append('category_id',this.num);
+        formDataAddProduct.append('desc', desc);
+        formDataAddProduct.append('discount', discount);
+        formDataAddProduct.append('image_file', image);
+        formDataAddProduct.append('name', name);
+        formDataAddProduct.append('order_count',this.order_count);
+        formDataAddProduct.append('rate',this.rate);
+        formDataAddProduct.append('seller_id',this.seller_id);
+        formDataAddProduct.append('price', price);
+        return this.http.post(this.apiUrl + 'dashboard/add-product',formDataAddProduct)
+    }
 
-   
-
+    editCatagory(id:any,name: any,image:File)  {
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // headers.append('token', this.token2);
+        let formDataeditCatagory:FormData = new FormData();
+        formDataeditCatagory.append('id', id);
+        formDataeditCatagory.append('name', name);
+        formDataeditCatagory.append('image_file', image);
+        return this.http.post(this.apiUrl + 'dashboard/edit-category',formDataeditCatagory)
+    }
 }

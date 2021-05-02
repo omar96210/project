@@ -24,7 +24,9 @@ export class CustomersComponent implements OnInit {
     this.Service.GetCustomers(this.page, this.initialPageSize)
       .then(data => {
         this.Customerslist = data;
-        console.log("Result of AllCustomers List", this.Customerslist);
+        this.Customersdata= this.Customerslist.data
+        console.log("Result of AllCustomers List", this.Customersdata);
+        
       })
       .catch(error => {
         console.log(this.result.Status);

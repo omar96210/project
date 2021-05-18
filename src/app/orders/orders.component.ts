@@ -20,6 +20,8 @@ export class OrdersComponent implements OnInit {
   tabledata: any;
   lengthordersimage: any;
   indexbill: any;
+  collectionSize:any;
+
   constructor(public Service: Service) { }
 
   ngOnInit(): void {
@@ -27,19 +29,17 @@ export class OrdersComponent implements OnInit {
   }
   
   Allorders() {
-    $("#Loading4").modal("show")
 
     this.Service.Getorders(this.page, this.initialPageSize)
       .then(data => {
-        $("#Loading4").modal("hide")
 
         this.orderslist = data;
         this.ordersdata = this.orderslist.data;
         this.lengthorderslist=this.ordersdata.length;
+        this.collectionSize=this.orderslist.size
         console.log("Result of Allorders List", this.ordersdata);
       })
       .catch(error => {
-        $("#Loading4").modal("hide")
         console.log(this.result.Status);
       }
       );
@@ -68,7 +68,6 @@ export class OrdersComponent implements OnInit {
     }
 
   }
-  collectionSize=200;
   pagination(event:any){
     this.page=event;
     this.Allorders()

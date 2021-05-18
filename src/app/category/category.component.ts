@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
   public form!: FormGroup;
   public editform!: FormGroup;
 
-  
+
   page = 1;
   Categorylist: any;
   Categorydata: any;
@@ -29,10 +29,12 @@ export class CategoryComponent implements OnInit {
   uploaddata: any;
   newImageName1: any;
   newImageName: any;
-  IDCategory:any
+  IDCategory: any
   editCategoryId: any;
   editselectedFile: any;
   editNameForm: any;
+  collectionSize: any;
+
   constructor(
     private fb: FormBuilder,
     public Service: Service,
@@ -50,17 +52,15 @@ export class CategoryComponent implements OnInit {
 
 
   AllCategory() {
-    $("#Loading5").modal("show")
     this.Service.GetCategory(this.page, this.initialPageSize)
       .then(data => {
-        $("#Loading5").modal("hide")
         this.Categorylist = data;
         this.lengthCategorylist = this.Categorylist.data.length;
-        this.Categorydata=this.Categorylist.data
-        console.log("Result of AllCategory List", this.Categorylist);
+        this.Categorydata = this.Categorylist.data
+        this.collectionSize = this.Categorylist.size
+        console.log("Result of AllCategory List", this.Categorydata);
       })
       .catch(error => {
-        $("#Loading5").modal("hide")
         console.log(this.result.Status);
       }
       );
@@ -72,7 +72,7 @@ export class CategoryComponent implements OnInit {
       if (this.Categorydata[i].id == this.IDimage) {
         this.imagedata = this.Categorydata[i].image;
         console.log(this.imagedata)
-        this.imagedata=this.imagedata
+        this.imagedata = this.imagedata
         console.log(this.imagedata)
       }
     }
@@ -81,65 +81,69 @@ export class CategoryComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
   }
   AddCategoryform() {
+    $("#Loading5").modal("hide")
     this.NameForm = this.form.value.Name;
     this.Service.AddCatagory(this.NameForm, this.selectedFile).subscribe(
       data => {
         this.result = data;
       },
       err => {
+        $("#Loading5").modal("hide")
+        $("#AddCategory").modal("hide")
+        this.form = this.fb.group({
+          Name: [null, null],
+        });
+        this.AllCategory();
       });
-      $("#AddCategory").modal("hide")
-      this.form = this.fb.group({
-        Name: [null, null],
-      });
-      console.log('this.result', this.result);
-      this.AllCategory();
+
   }
-  editgetId(Id:any){
-    this.editCategoryId=Id;
-    console.log("1",this.editCategoryId)
+  editgetId(Id: any) {
+    this.editCategoryId = Id;
+    console.log("1", this.editCategoryId)
   }
   editonFileSelected(event: any) {
     this.editselectedFile = <File>event.target.files[0];
-    console.log("2",this.editselectedFile)
+    console.log("2", this.editselectedFile)
 
   }
   editCategoryform() {
+    $("#Loading5").modal("show")
     this.editNameForm = this.editform.value.editName;
-    this.Service.editCatagory( this.editCategoryId, this.editNameForm, this.editselectedFile).subscribe(
+    this.Service.editCatagory(this.editCategoryId, this.editNameForm, this.editselectedFile).subscribe(
       data => {
         this.result = data;
       },
       err => {
+        $("#Loading5").modal("hide")
+        $("#editCategory").modal("hide")
+        console.log('this.result', this.result);
+        this.AllCategory();
       });
-      $("#editCategory").modal("hide")
-      console.log('this.result', this.result);
-      this.AllCategory();
+
   }
 
 
 
-  getId(ID: any){
-    this.IDCategory=ID;
+  getId(ID: any) {
+    this.IDCategory = ID;
   }
   deletCategoryform() {
     console.log(this.IDCategory);
     this.Service.deleteCatagory(this.IDCategory).subscribe(
       data => {
         this.result = data;
-        this.AllCategory();      },
+        this.AllCategory();
+      },
       err => {
-
+        $("#Loading5").modal("hide")
+        $("#DeleteCategory").modal("hide")
+        this.AllCategory();
       });
-      $("#DeleteCategory").modal("hide")
-      console.log('this.result', this.result);
-      this.AllCategory();
 
   }
-  
-  collectionSize=200;
-  pagination(event:any){
-    this.page=event;
+
+  pagination(event: any) {
+    this.page = event;
     this.AllCategory()
-}
+  }
 }

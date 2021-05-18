@@ -34,7 +34,7 @@
                     <button class="btn btn-primary" data-toggle="modal" data-target="#Editproduct" (click)="getproductid(product.id,product.name,product.desc,product.price,product.discount,product.image)">تعديل</button>
                 </td>
                 <td style="width:10%">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#Deleteproduct" (click)="getId(product.id)">حذف</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#Deleteproduct" (click)="getId(product.id)">حذف</button>
                 </td>
             </tr>
 
@@ -64,19 +64,19 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="name">إسم المنتج</label>
-                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل" [formControl]="form.controls['Name']">
+                                <input type="text" class="form-control" id="name" placeholder="إسم المنتج" [formControl]="form.controls['Name']">
                             </div>
                             <div class="form-group">
                                 <label for="desc">الوصف</label>
-                                <input type="text" class="form-control" id="desc" placeholder="لون..."  [formControl]="form.controls['descr']">
+                                <input type="text" class="form-control" id="desc" placeholder="الوصف"  [formControl]="form.controls['descr']">
                             </div>
                             <div class="form-group">
                                 <label for="price">السعر</label>
-                                <input type="number" class="form-control" id="price" placeholder="120"  [formControl]="form.controls['price']">
+                                <input type="number" class="form-control" id="price" placeholder="السعر"  [formControl]="form.controls['price']">
                             </div>
                             <div class="form-group">
                                 <label for="discount">الخصم</label>
-                                <input type="number" class="form-control" id="discount" placeholder="15"  [formControl]="form.controls['disco']">
+                                <input type="number" class="form-control" id="discount" placeholder="الخصم"  [formControl]="form.controls['disco']">
                             </div>
                         </div>
                         <div class="col-6">
@@ -120,19 +120,19 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="name">إسم المنتج</label>
-                                <input type="text" class="form-control" id="name" placeholder="الاسم بالكامل" [formControl]="editform.controls['editName']">
+                                <input type="text" class="form-control" id="name" placeholder="إسم المنتج" [formControl]="editform.controls['editName']">
                             </div>
                             <div class="form-group">
                                 <label for="desc">الوصف</label>
-                                <input type="text" class="form-control" id="desc" placeholder="لون..."  [formControl]="editform.controls['editdescr']">
+                                <input type="text" class="form-control" id="desc" placeholder="الوصف"  [formControl]="editform.controls['editdescr']">
                             </div>
                             <div class="form-group">
                                 <label for="price">السعر</label>
-                                <input type="number" class="form-control" id="price" placeholder="120"  [formControl]="editform.controls['editprice']">
+                                <input type="number" class="form-control" id="price" placeholder="السعر"  [formControl]="editform.controls['editprice']">
                             </div>
                             <div class="form-group">
                                 <label for="discount">الخصم</label>
-                                <input type="number" class="form-control" id="discount" placeholder="15"  [formControl]="editform.controls['editdisco']">
+                                <input type="number" class="form-control" id="discount" placeholder="الخصم"  [formControl]="editform.controls['editdisco']">
                             </div>
                         </div>
                         <div class="col-6">

@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
   Catagoryaddid: any;
   lengthCategorydata: any;
   productidedit: any;
-  collectionSize=200;
+  collectionSize:any;
 
   constructor(
     private fb: FormBuilder,
@@ -56,20 +56,16 @@ export class ProductComponent implements OnInit {
   }
 
   Allproduct() {
-    $("#Loading3").modal("show")
 
     this.Service.Getproduct(this.page, this.initialPageSize)
       .then(data => {
-        $("#Loading3").modal("hide")
         this.productlist = data;
         this.productdata = this.productlist.data
         this.lengthProductlist = this.productdata.length;
-        // this.collectionSize = this.productlist.length;
-        console.log(this.collectionSize)
+         this.collectionSize = this.productlist.size;
         console.log("Result of Allproduct List", this.productdata);
       })
       .catch(error => {
-        $("#Loading3").modal("hide")
         console.log(this.result.Status);
       }
       );
@@ -119,22 +115,22 @@ export class ProductComponent implements OnInit {
     this.Service.AddProduct(this.NameForm, this.descrForm, this.selectedFile, this.priceForm, this.discoForm, this.Catagoryaddid).subscribe(
       data => {
         this.result = data;
-        console.log('this.result', this.result);
         $("#Loading3").modal("hide")
         $("#Addproduct").modal("hide")
         this.Allproduct();
+        this.form = this.fb.group({
+          Name: [null, null],
+          descr: [null, null],
+          price: [null, null],
+          disco: [null, null],
+        });
       },
       err => {
-        window.alert("لم يتم الاضافة");
-
+        $("#Loading3").modal("hide")
+        $("#Addproduct").modal("hide")
+        this.Allproduct();
       });
 
-      this.form = this.fb.group({
-        Name: [null, null],
-        descr: [null, null],
-        price: [null, null],
-        disco: [null, null],
-      });
 
  
       

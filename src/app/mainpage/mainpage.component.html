@@ -61,7 +61,7 @@
                         <th style="width:5%">#</th>
                         <th> الاسم</th>
                         <th>الهاتف</th>
-                        <th>الايميل</th>
+                        <th>البريد الالكتروني</th>
                         <th>المبلغ</th>
                         <th style="width:10%">التفاصيل</th>
                     </tr>
@@ -122,7 +122,7 @@
                             <td>{{tabled.price}}</td>
                             <td>{{tabled.discount}}</td>
                             <td style="width:11%; cursor: pointer;" class="text-center">
-                                <img src="assets/imgexaple.png" width="50" alt="" data-toggle="modal"
+                                <img src="{{tabled.image}}" width="50" alt="" data-toggle="modal"
                                     data-target="#orderimage" (click)="openimage(tabled.id)" />
                             </td>
                         </tr>

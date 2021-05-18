@@ -14,14 +14,18 @@ import { AuthLayoutComponent } from './auth/auth-layout.component';
 // import {} from './'
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: AuthLayoutComponent,
+  //   children: [{
+  //     path: '',
+  //     loadChildren: () => AuthenticationModule
+  //   }
+  //   ]
+  // },
   {
     path: '',
-    component: AuthLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => AuthenticationModule
-    }
-    ]
+    component: LayoutComponent,
   },
   
   {

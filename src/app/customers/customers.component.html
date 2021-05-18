@@ -12,8 +12,8 @@
         <th>الاسم</th>
         <th>الهاتف</th>
         <th>ألاميل</th>
-        <th>تعديل</th>
-        <th>حذف</th>
+        <!-- <th>تعديل</th>
+        <th>حذف</th> -->
       </tr>
     </thead>
     <tbody>
@@ -24,12 +24,12 @@
       <td>{{Customers.name}}</td>
       <td>{{Customers.phone}}</td>
       <td>{{Customers.email}}</td>
-      <td style="width:10%">
+      <!-- <td style="width:10%">
         <button class="btn btn-primary" data-toggle="modal" data-target="#EditCoustomer">تعديل</button>
       </td>
       <td style="width:10%">
         <button class="btn btn-primary" data-toggle="modal" data-target="#DeleteCoustomer">حذف</button>
-      </td>
+      </td> -->
       </tr>
     </tbody>
   </table>
@@ -44,7 +44,7 @@
 
 
 <!-- Modal AddCoustomer -->
-<div class="modal fade" id="AddCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- <div class="modal fade" id="AddCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -76,8 +76,8 @@
       </div>
     </div>
   </div>
-</div>
-<!-- Modal EditCoustomer -->
+</div> -->
+<!-- Modal EditCoustomer
 <div class="modal fade" id="EditCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -110,8 +110,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Modal DeleteCoustomer -->
+<!-- 
 <div class="modal fade" id="DeleteCoustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -130,5 +131,22 @@
         <button type="button" class="btn btn-primary">نعم</button>
       </div>
     </div>
+  </div>
+</div> -->
+
+<div class="modal spinnerT" id="Loading2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered justify-content-center align-items-center">
+      <div>
+          <div class="lds-roller" id="loading">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
   </div>
 </div>

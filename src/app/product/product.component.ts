@@ -32,6 +32,7 @@ export class ProductComponent implements OnInit {
   Catagoryaddid: any;
   lengthCategorydata: any;
   productidedit: any;
+  collectionSize=200;
 
   constructor(
     private fb: FormBuilder,
@@ -53,16 +54,22 @@ export class ProductComponent implements OnInit {
       disco: [null, null],
     });
   }
-  
+
   Allproduct() {
+    $("#Loading3").modal("show")
+
     this.Service.Getproduct(this.page, this.initialPageSize)
       .then(data => {
+        $("#Loading3").modal("hide")
         this.productlist = data;
-        this.productdata=this.productlist.data
-        this.lengthProductlist=this.productdata.length;
+        this.productdata = this.productlist.data
+        this.lengthProductlist = this.productdata.length;
+        // this.collectionSize = this.productlist.length;
+        console.log(this.collectionSize)
         console.log("Result of Allproduct List", this.productdata);
       })
       .catch(error => {
+        $("#Loading3").modal("hide")
         console.log(this.result.Status);
       }
       );
@@ -71,23 +78,23 @@ export class ProductComponent implements OnInit {
     this.Service.GetCategory(this.page, 200)
       .then(data => {
         this.Categorylist = data;
-        this.Categorydata=this.Categorylist.data
-        this.lengthCategorydata=this.Categorydata.length;
+        this.Categorydata = this.Categorylist.data
+        this.lengthCategorydata = this.Categorydata.length;
         console.log("Result of AllCategory List", this.Categorydata);
       })
       .catch(error => {
         console.log(this.result.Status);
       }
       );
-      
+
   }
-  
+
   openimage(imageid: any) {
     this.IDimage = imageid;
-    for (let i = 0; i <=this.lengthProductlist-1; i++) {
-      if ( this.productdata[i].id == this.IDimage) {
+    for (let i = 0; i <= this.lengthProductlist - 1; i++) {
+      if (this.productdata[i].id == this.IDimage) {
         this.imagedata = this.productdata[i].image;
-       
+
       }
     }
   }
@@ -95,89 +102,146 @@ export class ProductComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
   }
-  getCatagoryaddid(event:any){
-    this.Catagoryaddid=event.target.selectedIndex-1
+  getCatagoryaddid(event: any) {
+    this.Catagoryaddid = event.target.selectedIndex - 1
     this.Catagoryaddid = this.Categorydata[this.Catagoryaddid].id;
     console.log(this.Catagoryaddid)
     this.Catagoryaddid.toString()
   }
   AddProductform() {
-         this.NameForm=this.form.value.Name;
-         this.descrForm=this.form.value.descr;
-         this.priceForm=this.form.value.price;
-         this.discoForm=this.form.value.disco;
+    $("#Loading3").modal("show")
 
-        this.Service.AddProduct(this.NameForm,this.descrForm,this.selectedFile,this.priceForm,this.discoForm,this.Catagoryaddid).subscribe(
-          data => {
-            this.result = data;
-            console.log('this.result', this.result);
-            if (this.result.Success == true) {
-              this.Allproduct();
-         
-            }
-            else if (this.result.Success == false) {
-            }
-          },
-          err => {
-            
-             });
+    this.NameForm = this.form.value.Name;
+    this.descrForm = this.form.value.descr;
+    this.priceForm = this.form.value.price;
+    this.discoForm = this.form.value.disco;
+
+    this.Service.AddProduct(this.NameForm, this.descrForm, this.selectedFile, this.priceForm, this.discoForm, this.Catagoryaddid).subscribe(
+      data => {
+        this.result = data;
+        console.log('this.result', this.result);
+        $("#Loading3").modal("hide")
+        $("#Addproduct").modal("hide")
+        this.Allproduct();
+      },
+      err => {
+        window.alert("لم يتم الاضافة");
+
+      });
+
+      this.form = this.fb.group({
+        Name: [null, null],
+        descr: [null, null],
+        price: [null, null],
+        disco: [null, null],
+      });
+
+ 
+      
   }
-  getproductid(id:any){
-    this.productidedit=id;
+
+  // updateMove(id, packag, packagnumbe, money, MinimumCamel, MaximumCamel, MinimumCompetitor, MaximumCompetitor, packagrole) {
+  //   this.pakageId = id;
+  //   this.packagnameedit = packag;
+  //   this.packagnumberedit = packagnumbe;
+  //   this.moneyedit = money;
+  //   this.MinimumCamelsCountedit = MinimumCamel;
+  //   this.MaximumCamelsCountedit = MaximumCamel;
+  //   this.MinimumCompetitorsCountedit = MinimumCompetitor;
+  //   this.MaximumCompetitorsCountedit = MaximumCompetitor;
+  //   this.packagroleedit = packagrole;
+
+  //   this.formupdate.controls['packagname'].setValue(this.packagnameedit);
+  //   this.formupdate.controls['packagnumber'].setValue(this.packagnumberedit);
+  //   this.formupdate.controls['money'].setValue(this.moneyedit);
+  //   this.formupdate.controls['MinimumCamelsCount'].setValue(this.MinimumCamelsCountedit);
+  //   this.formupdate.controls['MaximumCamelsCount'].setValue(this.MaximumCamelsCountedit);
+  //   this.formupdate.controls['MinimumCompetitorsCount'].setValue(this.MinimumCompetitorsCountedit);
+  //   this.formupdate.controls['MaximumCompetitorsCount'].setValue(this.MaximumCompetitorsCountedit);
+  //   this.formupdate.controls['packagrole'].setValue(this.packagroleedit);
+  // }  (product.id,product.name,product.desc,product.price,product.discount,product.image)
+  productname: any;
+  productdesc: any;
+  productprice: any;
+  productdiscount: any;
+  productimage: any;
+
+  getproductid(id: any, name: any, desc: any, price: any, discount: any, image: any) {
+    this.productidedit = id;
+    this.productname = name;
+    this.productdesc = desc;
+    this.productprice = price;
+    this.productdiscount = discount;
+    this.productimage = image;
+
+    this.editform.controls['editName'].setValue(this.productname);
+    this.editform.controls['editdescr'].setValue(this.productdesc);
+    this.editform.controls['editprice'].setValue(this.productprice);
+    this.editform.controls['editdisco'].setValue(this.productdiscount);
+
   }
+  order_count:any=5;
+  rate:any=4;
+  seller_id:any=1;
   editProductform() {
-    this.NameForm=this.editform.value.editName;
-    this.descrForm=this.editform.value.editdescr;
-    this.priceForm=this.editform.value.editprice;
-    this.discoForm=this.editform.value.editdisco;
-    console.log("1",this.NameForm)
-    console.log("2",this.descrForm)
-    console.log("3",this.priceForm)
-    console.log("4",this.selectedFile)
-    console.log("4",this.Catagoryaddid)
-    console.log("5",this.productidedit)
+    $("#Loading3").modal("show")
+
+    this.NameForm = this.editform.value.editName;
+    this.descrForm = this.editform.value.editdescr;
+    this.priceForm = this.editform.value.editprice;
+    this.discoForm = this.editform.value.editdisco;
+
+    let formDataeditProduct:FormData = new FormData();
+    formDataeditProduct.append('id',this.productidedit);
+    formDataeditProduct.append('category_id',this.Catagoryaddid);
+    formDataeditProduct.append('desc', this.descrForm);
+    formDataeditProduct.append('discount', this.discoForm);
+    formDataeditProduct.append('image_file', this.selectedFile);
+    formDataeditProduct.append('name', this.NameForm);
+    formDataeditProduct.append('order_count',this.order_count);
+    formDataeditProduct.append('rate',this.rate);
+    formDataeditProduct.append('seller_id',this.seller_id);
+    formDataeditProduct.append('price', this.priceForm);
 
 
-   this.Service.editProduct(this.productidedit,this.NameForm,this.descrForm,this.selectedFile,this.priceForm,this.discoForm,this.Catagoryaddid).subscribe(
-     data => {
-       this.result = data;
-       console.log('this.result', this.result);
-       if (this.result.Success == true) {
-         this.Allproduct();
+    this.Service.editProduct(formDataeditProduct).subscribe(
+      data => {
+        this.result = data;
     
-       }
-       else if (this.result.Success == false) {
-       }
-     },
-     err => {
-       
-        });
-        $("#Editproduct").modal("hide")
+     
 
-}
-  
-  getId(ID: any){
-    this.IDproduct=ID;
+      },
+      err => {
+        $("#Loading3").modal("hide")
+        $("#Editproduct").modal("hide")
+        this.Allproduct();
+      });
+      
+
+  }
+
+  getId(ID: any) {
+    this.IDproduct = ID;
   }
   deletproductform() {
+    $("#Loading3").modal("show")
     console.log(this.IDproduct);
     this.Service.deleteProduct(this.IDproduct).subscribe(
       data => {
         this.result = data;
-        this.Allproduct();  
-          },
-      err => {
 
+      },
+      err => {
+        $("#Loading3").modal("hide")
+        $("#Deleteproduct").modal("hide")
+        this.Allproduct();
       });
-      $("#Deleteproduct").modal("hide")
-      console.log('this.result', this.result);
-      this.Allproduct();
+
 
   }
-  collectionSize=200;
-  pagination(event:any){
-    this.page=event;
+  pagination(event: any) {
+    this.page = event;
     this.Allproduct()
-}
+  }
 
 }

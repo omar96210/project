@@ -27,19 +27,22 @@ export class MainpageComponent implements OnInit {
   }
 
   Alldashboard() {
-
+    $("#Loading1").modal("show")
     this.Service.GetDashboardData()
       .then(data => {
+        $("#Loading1").modal("hide")
         this.dashboardlist = data;
         this.dashboarddata = this.dashboardlist.recentOrders;
         this.lengthrecentOrders = this.dashboardlist.recentOrders.length;
         console.log("Result of Alldashboard List", this.dashboardlist);
       })
       .catch(error => {
+        $("#Loading1").modal("hide")
         console.log(this.result.Status);
 
       }
       );
+      
   }
 
   openbill(id: any) {

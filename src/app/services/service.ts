@@ -180,21 +180,11 @@ export class Service {
         return this.http.post(this.apiUrl + 'dashboard/delete-product?id='+Id,Id)
     }
 
-    editProduct(id:any,name: any, desc: any,image:any,price:any,discount:any,category_id:any)  {
+    editProduct(formDataeditProduct:any)  {
         // const headers = new Headers();
         // headers.append('Content-Type', 'application/json');
         // headers.append('token', this.token2);
-        let formDataeditProduct:FormData = new FormData();
-        formDataeditProduct.append('id',id);
-        formDataeditProduct.append('category_id',category_id);
-        formDataeditProduct.append('desc', desc);
-        formDataeditProduct.append('discount', discount);
-        formDataeditProduct.append('image_file', image);
-        formDataeditProduct.append('name', name);
-        formDataeditProduct.append('order_count',this.order_count);5
-        formDataeditProduct.append('rate',this.rate);4
-        formDataeditProduct.append('seller_id',this.seller_id);1
-        formDataeditProduct.append('price', price);
+        
         return this.http.post(this.apiUrl + 'dashboard/edit-product',formDataeditProduct)
     }
 

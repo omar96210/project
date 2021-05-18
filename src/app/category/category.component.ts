@@ -50,14 +50,17 @@ export class CategoryComponent implements OnInit {
 
 
   AllCategory() {
+    $("#Loading5").modal("show")
     this.Service.GetCategory(this.page, this.initialPageSize)
       .then(data => {
+        $("#Loading5").modal("hide")
         this.Categorylist = data;
         this.lengthCategorylist = this.Categorylist.data.length;
         this.Categorydata=this.Categorylist.data
-        console.log("Result of AllCategory List", this.Categorydata);
+        console.log("Result of AllCategory List", this.Categorylist);
       })
       .catch(error => {
+        $("#Loading5").modal("hide")
         console.log(this.result.Status);
       }
       );

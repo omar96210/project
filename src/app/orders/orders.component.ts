@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../services/service';
+declare var $: any;
 
 @Component({
   selector: 'app-orders',
@@ -26,14 +27,19 @@ export class OrdersComponent implements OnInit {
   }
   
   Allorders() {
+    $("#Loading4").modal("show")
+
     this.Service.Getorders(this.page, this.initialPageSize)
       .then(data => {
+        $("#Loading4").modal("hide")
+
         this.orderslist = data;
         this.ordersdata = this.orderslist.data;
         this.lengthorderslist=this.ordersdata.length;
         console.log("Result of Allorders List", this.ordersdata);
       })
       .catch(error => {
+        $("#Loading4").modal("hide")
         console.log(this.result.Status);
       }
       );

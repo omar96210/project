@@ -9,7 +9,7 @@
                 <th>البريد الالكتروني</th>
 
                 <th>السعر بالكامل</th>
-                <th>الموقع</th>
+                <!-- <th>الموقع</th> -->
                 <th>التفاصيل</th>
             </tr>
         </thead>
@@ -23,9 +23,9 @@
                 <td>{{orders.user.phone}}</td>
                 <td>{{orders.user.email}}</td>
                 <td>{{orders.total_cost}}</td>
-                <td style="width:11%; cursor: pointer;" class="text-center">
+                <!-- <td style="width:11%; cursor: pointer;" class="text-center">
                     <img src="assets/location.png" width="50" alt="" data-toggle="modal" data-target="#productimage" />
-                </td>
+                </td> -->
                 <td style="width:10%"><button class="btn btn-primary" data-toggle="modal"
                    (click)="openbill(orders.id)"     data-target="#vieworder">التفاصيل</button></td>
             </tr>

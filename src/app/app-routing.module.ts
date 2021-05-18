@@ -26,8 +26,12 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: () => MainpageModule
+    }
+    ]
   },
-  
   {
     path: '',
     component: LayoutComponent,

@@ -136,26 +136,6 @@ export class ProductComponent implements OnInit {
       
   }
 
-  // updateMove(id, packag, packagnumbe, money, MinimumCamel, MaximumCamel, MinimumCompetitor, MaximumCompetitor, packagrole) {
-  //   this.pakageId = id;
-  //   this.packagnameedit = packag;
-  //   this.packagnumberedit = packagnumbe;
-  //   this.moneyedit = money;
-  //   this.MinimumCamelsCountedit = MinimumCamel;
-  //   this.MaximumCamelsCountedit = MaximumCamel;
-  //   this.MinimumCompetitorsCountedit = MinimumCompetitor;
-  //   this.MaximumCompetitorsCountedit = MaximumCompetitor;
-  //   this.packagroleedit = packagrole;
-
-  //   this.formupdate.controls['packagname'].setValue(this.packagnameedit);
-  //   this.formupdate.controls['packagnumber'].setValue(this.packagnumberedit);
-  //   this.formupdate.controls['money'].setValue(this.moneyedit);
-  //   this.formupdate.controls['MinimumCamelsCount'].setValue(this.MinimumCamelsCountedit);
-  //   this.formupdate.controls['MaximumCamelsCount'].setValue(this.MaximumCamelsCountedit);
-  //   this.formupdate.controls['MinimumCompetitorsCount'].setValue(this.MinimumCompetitorsCountedit);
-  //   this.formupdate.controls['MaximumCompetitorsCount'].setValue(this.MaximumCompetitorsCountedit);
-  //   this.formupdate.controls['packagrole'].setValue(this.packagroleedit);
-  // }  (product.id,product.name,product.desc,product.price,product.discount,product.image)
   productname: any;
   productdesc: any;
   productprice: any;
@@ -174,7 +154,6 @@ export class ProductComponent implements OnInit {
     this.editform.controls['editdescr'].setValue(this.productdesc);
     this.editform.controls['editprice'].setValue(this.productprice);
     this.editform.controls['editdisco'].setValue(this.productdiscount);
-
   }
   order_count:any=5;
   rate:any=4;

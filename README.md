@@ -1,7 +1,7 @@
 # Project
 
 
-Live demo https://wageless-learning.000webhostapp.com/control/index.html/
+Live demo https://wageless-learning.000webhostapp.com
 
 
 

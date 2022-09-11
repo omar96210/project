@@ -1,5 +1,18 @@
 # Project
 
+
+Live demo https://wageless-learning.000webhostapp.com/control/index.html/
+
+
+
+Control Page2
+Control web for mobile App (Angular + API integration)
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
 ## Development server
